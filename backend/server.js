@@ -5,7 +5,7 @@ const cons = require("cors");
 const app = express();
 app.use(cors());
 app.use(express.json());
-mongoose.connect("mongodb:??127.0.0.1:2701/distraction_blocker")
+mongoose.connect(process.env.MONGODB_URI)
 .then(()=> console.log("MONGO DB CONNECTED"));
 app.use("/tasks", require("./routes/taskRoutes"));
 
