@@ -73,7 +73,7 @@ router.get("/stats", protect, async (req, res) => {
         const totalTasks = await Task.countDocuments({
             userId: req.user._id
         });
-        
+
         res.json({
             streak: req.user.streak,
             bestStreak: req.user.bestStreak,

@@ -15,6 +15,7 @@ const userSchema  = new mongoose.Schema({
     rewardTimeRemaining : {type : Number, default : 0},
     
     rewardActive : {type : Boolean, default : false},
+    rewardEndTime : {type : Date},
     createdAt:{type: Date, default:Date.now}
 });
 

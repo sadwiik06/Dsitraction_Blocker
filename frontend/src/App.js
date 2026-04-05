@@ -59,6 +59,7 @@ function App() {
           <Login
             onLogin={(newToken) => {
               localStorage.setItem('token', newToken);
+              axios.defaults.headers.common['Authorization'] = `Bearer ${newToken}`;
               setToken(newToken);
             }}
           />
@@ -66,6 +67,7 @@ function App() {
           <Register
             onRegister={(newToken) => {
               localStorage.setItem('token', newToken);
+              axios.defaults.headers.common['Authorization'] = `Bearer ${newToken}`;
               setToken(newToken);
             }}
           />

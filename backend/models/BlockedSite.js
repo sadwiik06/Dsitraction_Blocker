@@ -1,7 +1,7 @@
 const mongoose  = require("mongoose");
 
 const blockedsiteSchema = new mongoose.Schema({
-    url: { type : String , required : [true, 'URL is required'], unique : true, trim : true, lowercase:true},
+    url: { type : String , required : [true, 'URL is required'], trim : true, lowercase:true},
     userId: {type : mongoose.Schema.Types.ObjectId, ref: 'User', required : true},
 
     createdAt: {type : Date, default: Date.now}

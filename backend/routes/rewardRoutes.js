@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const Task = require('../models/Task');
-const {protect} =  require('../middleware/auth');
+const { protect } = require('../middleware/auth');
 
-router.post('/start', protect, async(req,res)=>{
-    try{
-        const {minutes} = req.body;
-        const rewardMinutes  =Math.min(Math.abs(minutes || 30),60);
+router.post('/start', protect, async (req, res) => {
+    try {
+        const { minutes } = req.body;
+        const rewardMinutes = Math.min(Math.abs(minutes || 30), 60);
         const [incompleteTasks, totalTasks] = await Promise.all([
             Task.countDocuments({ userId: req.user._id, completed: false }),
             Task.countDocuments({ userId: req.user._id })
@@ -25,10 +25,13 @@ router.post('/start', protect, async(req,res)=>{
             });
         }
         console.log(`[Reward] User ${req.user.username} starting ${rewardMinutes}min reward`);
-        
+
         req.user.rewardActive = true;
         req.user.rewardEndTime = new Date(Date.now() + rewardMinutes * 60000);
         await req.user.save();
+
+        // Consume the tasks so they can't be used for another reward
+        await Task.deleteMany({ userId: req.user._id, completed: true });
 
         res.json({
             success: true,
@@ -38,46 +41,46 @@ router.post('/start', protect, async(req,res)=>{
                 endTime: req.user.rewardEndTime
             }
         });
-    } catch(err) {
+    } catch (err) {
         console.error(`[Reward] Start Error: ${err.message}`);
         res.status(500).json({ success: false, message: err.message });
     }
 });
 
-router.get('/time',protect, async(req,res)=>{
-    try{
-        let remaining =0;
-        if(req.user.rewardEndTime && req.user.rewardActive){
-            remaining = Math.max(0,Math.floor(
-                (req.user.rewardEndTime - new Date())/1000
+router.get('/time', protect, async (req, res) => {
+    try {
+        let remaining = 0;
+        if (req.user.rewardEndTime && req.user.rewardActive) {
+            remaining = Math.max(0, Math.floor(
+                (req.user.rewardEndTime - new Date()) / 1000
             ));
-            if(remaining === 0){
+            if (remaining === 0) {
                 req.user.rewardActive = false;
                 req.user.rewardEndTime = null;
                 await req.user.save();
             }
         }
         res.json({
-            success:true,
+            success: true,
             remainingSeconds: remaining
         });
-    }catch(err){
-        res.status(500).json({success:false,message:err.message});
+    } catch (err) {
+        res.status(500).json({ success: false, message: err.message });
     }
 });
-router.post('/cancel', protect, async(req,res)=>{
-    try{
+router.post('/cancel', protect, async (req, res) => {
+    try {
         req.user.rewardActive = false;
         req.user.rewardEndTime = null;
         await req.user.save();
         res.json({
-            success: true, 
+            success: true,
             message: 'Reward cancelled'
         });
 
 
-    } catch(err){
-        res.status(500).json({success:false, message: err.message});
+    } catch (err) {
+        res.status(500).json({ success: false, message: err.message });
     }
 });
 module.exports = router;
