@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { width: 320px; font-family: 'Space Mono', monospace; background: #0c0c0c; color: #f0f0f0; margin: 0; padding: 20px; }
+        h2 { font-family: 'Bebas Neue', sans-serif; color: #a855f7; font-size: 2rem; margin: 0 0 20px 0; }
+        .input-group { margin-bottom: 15px; }
+        input { width: 100%; box-sizing: border-box; padding: 8px; background: #1c1c1c; border: 2px solid #3a3a3a; color: #f0f0f0; font-family: inherit; }
+        button { width: 100%; padding: 10px; background: #a855f7; color: #000; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; border: 2px solid #f0f0f0; cursor: pointer; box-shadow: 3px 3px 0 #f0f0f0; transition: transform 0.1s; }
+        button:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 #f0f0f0; }
+        #error { color: #ff2b4e; font-size: 0.8rem; margin-top: 10px; display: none; }
+        #logged-in-view { display: none; text-align: center; }
+        #logout-btn { background: #ff2b4e; margin-top: 15px; color: white; display: none; }
+    </style>
+</head>
+<body>
+    <div id="login-view">
+        <h2 style="font-family: inherit;">DISCIPLINE BLOCKER</h2>
+        <div class="input-group">
+            <input type="email" id="email" placeholder="Email" />
+        </div>
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Password" />
+        </div>
+        <button id="login-btn">LOGIN TO SYNC</button>
+        <div id="error"></div>
+        <p style="text-align: center; margin-top: 15px; font-size: 0.8rem; color: #777;">
+            NO ACCOUNT? <br/><a href="#" id="register-link" style="color: #a855f7; text-decoration: none;">REGISTER ON DASHBOARD</a>
+        </p>
+    </div>
+    <div id="logged-in-view">
+        <h2 style="font-family: inherit;">AUTH ACTIVE</h2>
+        <p style="font-size: 0.8rem; color:#777;">Extension connected.</p>
+        <button id="dashboard-btn" style="background:#f0f0f0; margin-bottom: 10px;">GO TO DASHBOARD</button>
+        <button id="sync-btn" style="background:#39ff7e; margin-bottom: 10px;">FORCE SYNC BLOCKS</button>
+        <button id="logout-btn" style="display:block">LOGOUT</button>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

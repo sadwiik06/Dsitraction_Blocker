@@ -28,6 +28,7 @@ function BlockedSites() {
       await axios.post(`${API}/blocker/sites`, { url: newSite });
       setNewSite('');
       fetchSites();
+      window.postMessage({ type: "SYNC_EXTENSION" }, "*");
     } catch (err) {
       console.error('Error adding site:', err);
     }
@@ -37,6 +38,7 @@ function BlockedSites() {
     try {
       await axios.delete(`${API}/blocker/sites/${id}`);
       fetchSites();
+      window.postMessage({ type: "SYNC_EXTENSION" }, "*");
     } catch (err) {
       console.error('Error deleting site:', err);
     }

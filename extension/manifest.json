@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Discipline Blocker",
+  "version": "1.0",
+  "description": "Aggressive distraction blocker that syncs with your tasks.",
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess",
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Discipline Blocker"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["blocked.html"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://distraction-blocker-4hqd.vercel.app/*", "*://localhost/*"],
+      "js": ["content.js"]
+    }
+  ]
+}

@@ -77,6 +77,7 @@ function RewardPanel({ stats }) {
 
             await axios.post(`${API}/rewards/start`, { minutes });
             window.dispatchEvent(new Event('taskUpdated'));
+            window.postMessage({ type: "SYNC_EXTENSION" }, "*");
         } catch (err) {
             setActive(false);
             setRemaining(0);
@@ -90,6 +91,7 @@ function RewardPanel({ stats }) {
             setRemaining(0);
             await axios.post(`${API}/rewards/cancel`);
             window.dispatchEvent(new Event('taskUpdated'));
+            window.postMessage({ type: "SYNC_EXTENSION" }, "*");
         } catch (err) {
             console.error('Error cancelling reward:', err);
         }
