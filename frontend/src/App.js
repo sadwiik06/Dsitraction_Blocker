@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Login from './components/Login';
 import Register from './components/Register';
@@ -17,7 +17,15 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [showLogin, setShowLogin] = useState(true);
 
-  const fetchUser = async () => {
+  const logout = useCallback(() => {
+    localStorage.removeItem('token');
+    delete axios.defaults.headers.common['Authorization'];
+    setToken(null);
+    setUser(null);
+    setShowLogin(true);
+  }, []);
+
+  const fetchUser = useCallback(async () => {
     try {
       const res = await axios.get(`${API}/users/stats`);
       // The backend returns the user stats object directly
@@ -28,7 +36,7 @@ function App() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [logout]);
 
   useEffect(() => {
     if (token) {
@@ -39,16 +47,7 @@ function App() {
       setLoading(false);
     }
     return () => window.removeEventListener('taskUpdated', fetchUser);
-  }, [token]);
-
-
-  const logout = () => {
-    localStorage.removeItem('token');
-    delete axios.defaults.headers.common['Authorization'];
-    setToken(null);
-    setUser(null);
-    setShowLogin(true);
-  };
+  }, [token, fetchUser]);
 
   if (loading) return <div className="loader">Loading Discipline system...</div>;
 
