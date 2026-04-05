@@ -9,7 +9,7 @@ import RewardPanel from './components/RewardPanel';
 
 import './App.css';
 
-const API = 'http://localhost:5000/api';
+const API = process.env.REACT_APP_API_URL || (process.env.NODE_ENV === 'production' ? 'https://distraction-blocker-x30r.onrender.com/api' : 'http://localhost:5000/api');
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));

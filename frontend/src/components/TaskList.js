@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API = 'http://localhost:5000/api';
+const API = process.env.REACT_APP_API_URL || (process.env.NODE_ENV === 'production' ? 'https://distraction-blocker-x30r.onrender.com/api' : 'http://localhost:5000/api');
 
 function TaskList() {
   const [tasks, setTasks] = useState([]);
