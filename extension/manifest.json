@@ -2,33 +2,51 @@
   "manifest_version": 3,
   "name": "Discipline Blocker",
   "version": "1.0",
-  "description": "Aggressive distraction blocker that syncs with your tasks.",
+  "description": "Aggressive distraction blocker that helps you stay focused by syncing with your tasks.",
+  "author": "Sai Sadwiik",
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "discipline-blocker@sai.com"
+    }
+  },
+
   "permissions": [
-    "declarativeNetRequest",
     "declarativeNetRequestWithHostAccess",
     "storage",
     "alarms"
   ],
+
   "host_permissions": [
     "*://*/*"
   ],
+
   "background": {
     "service_worker": "background.js"
   },
+
   "action": {
     "default_popup": "popup.html",
     "default_title": "Discipline Blocker"
   },
+
   "web_accessible_resources": [
     {
       "resources": ["blocked.html"],
       "matches": ["<all_urls>"]
     }
   ],
+
   "content_scripts": [
     {
       "matches": ["*://distraction-blocker-4hqd.vercel.app/*", "*://localhost/*"],
       "js": ["content.js"]
     }
-  ]
+  ],
+
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
 }
