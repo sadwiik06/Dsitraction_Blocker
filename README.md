@@ -1,4 +1,4 @@
-# **DISTRACTION BLOCKER**
+**DISTRACTION BLOCKER**
 
 Go to the release:  
 https://github.com/sadwiik06/Distraction_Blocker/releases/tag/v1.0  
@@ -7,7 +7,7 @@ https://github.com/sadwiik06/Distraction_Blocker/releases/tag/v1.0
 
 ---
 
-## **Installation (for Chrome)**
+**Installation (for Chrome)**
 
 - Download **extension.crx** from the Assets section below  
 - Open Chrome and go to `chrome://extensions/`  
@@ -17,7 +17,7 @@ https://github.com/sadwiik06/Distraction_Blocker/releases/tag/v1.0
 
 ---
 
-## **Installation for Firefox**
+**Installation for Firefox**
 
 **.xpi for Firefox**
 
@@ -29,7 +29,7 @@ https://github.com/sadwiik06/Distraction_Blocker/releases/tag/v1.0
 
 ---
 
-## **Usage**
+**Usage**
 
 - Register  
 - Add tasks on the dashboard  
@@ -37,9 +37,6 @@ https://github.com/sadwiik06/Distraction_Blocker/releases/tag/v1.0
 - Until all tasks are done, those sites will be blocked  
 - Complete all tasks → unlock reward time (15 / 30 / 60 min)  
 - Daily streak keep you accountable 
-
----
-
 
 ## **Built with**
 - React  
