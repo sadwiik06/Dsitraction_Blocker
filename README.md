@@ -15,6 +15,10 @@ https://github.com/sadwiik06/Distraction_Blocker/releases/tag/v1.0
 - Drag the downloaded `.crx` file into the extensions page  
 - Click **Add extension**
 
+-- **If you don't want crx method**
+
+**Just downlaod the zip and go to `chrome://extensions/` , enable developer mode on right side top and click on Load Unpacked and Just select the extension folder from the extracted folder of this project**
+
 TRY FIREFOX IF YOU FACED ANY ERROR WHILE IN THE DOWNLOAD PROCESS. FIREFOX WORKS IN MOST CASES
 ---
 
