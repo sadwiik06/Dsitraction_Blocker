@@ -9,12 +9,14 @@ https://github.com/sadwiik06/Distraction_Blocker/releases/tag/v1.0
 
 **Installation (for Chrome)**
 
+WITH CRX
 - Download **extension.crx** from the Assets section below  
 - Open Chrome and go to `chrome://extensions/`  
 - Enable **Developer mode** 
 - Drag the downloaded `.crx` file into the extensions page  
 - Click **Add extension**
 
+WITHOUT CRX (SURE SHOT WORKING FOR CHROME)
 -- **If you don't want crx method**
 
 **Just downlaod the zip and go to `chrome://extensions/` , enable developer mode on right side top and click on Load Unpacked and Just select the extension folder from the extracted folder of this project**
