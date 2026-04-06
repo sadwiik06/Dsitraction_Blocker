@@ -15,6 +15,7 @@ https://github.com/sadwiik06/Distraction_Blocker/releases/tag/v1.0
 - Drag the downloaded `.crx` file into the extensions page  
 - Click **Add extension**
 
+TRY FIREFOX IF YOU FACED ANY ERROR WHILE IN THE DOWNLOAD PROCESS. FIREFOX WORKS IN MOST CASES
 ---
 
 **Installation for Firefox**
